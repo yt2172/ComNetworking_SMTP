@@ -11,7 +11,7 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Fill in start
     clientSocket = socket(AF_INET, SOCK_STREAM)
-    clientSocket.connect((mailserver, port))
+    clientSocket.connect((mailserver,port))
     # Fill in end
 
     recv = clientSocket.recv(1024).decode()
@@ -29,8 +29,8 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send MAIL FROM command and print server response.
     # Fill in start
-    mailFrom = "MAIL FROM: <sender@smtpclient.com>\r\n"
-    clientSocket.send(mailFrom.encode())
+    MAILFROM = "MAIL FROM: <sender@smtpclient.com>\r\n"
+    clientSocket.send(MAILFROM.encode())
     recv2 = clientSocket.recv(1024).decode()
     #print(recv2)
     #if recv2[:3] != '250':
@@ -39,8 +39,8 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send RCPT TO command and print server response.
     # Fill in start
-    recpTo = "RECP TO: <receiver@smtpclient.com>\r\n"
-    clientSocket.send(recpTo.encode())
+    RECPTO = "RECP TO: <receiver@smtpclient.com>\r\n"
+    clientSocket.send(RECPTO.encode())
     recv3 = clientSocket.recv(1024).decode()
     #print(recv3)
     #if recv3[:3] != '250':
@@ -49,8 +49,8 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send DATA command and print server response.
     # Fill in start
-    data = 'DATA\r\n'
-    clientSocket.send(data.encode())
+    DATA = 'DATA\r\n'
+    clientSocket.send(DATA.encode())
     recv4 = clientSocket.recv(1024).decode()
     #print(recv4)
     #if recv4[:3] != '354':
@@ -73,8 +73,8 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send QUIT command and get server response.
     # Fill in start
-    quit = 'QUIT\r\n'
-    clientSocket.send(quit.encode())
+    QUIT = 'QUIT\r\n'
+    clientSocket.send(QUIT.encode())
     recv6 = clientSocket.recv(1024).decode()
     #print(recv6)
     #if recv6[:3] != '221':
